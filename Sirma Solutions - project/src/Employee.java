@@ -5,7 +5,7 @@ public class Employee {
     private int ProjectID;
 
     private LocalDate DateFrom;
-    private  LocalDate DateTo;
+    private LocalDate DateTo;
 
     public Employee(int empID, int projectID, LocalDate dateFrom, LocalDate dateTo) {
         EmpID = empID;

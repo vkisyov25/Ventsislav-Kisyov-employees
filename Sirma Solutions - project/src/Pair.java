@@ -29,11 +29,6 @@ public class Pair {
 
     @Override
     public String toString() {
-        return "The longest working pair is with the following parameters: " +
-                "empId1=" + empId1 +
-                ", empId2=" + empId2 +
-                ", projectId=" + projectId +
-                ", daysWorked=" + daysWorked +
-                '}';
+        return "The longest working pair is with the following parameters: " + "empId1=" + empId1 + ", empId2=" + empId2 + ", projectId=" + projectId + ", daysWorked=" + daysWorked + '}';
     }
 }

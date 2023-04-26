@@ -13,35 +13,35 @@ public class Main {
         String csvFile = "D:\\JavaPrograms\\Advanced\\Sirma Solutions - project\\src\\file.csv";
 
         List<Employee> employeeList = new ArrayList<>();
-        Map<Integer,List<Employee>> grupByProjectMap = new HashMap<>();
+        Map<Integer, List<Employee>> grupByProjectMap = new HashMap<>();
 
-        try(BufferedReader in = new BufferedReader(new FileReader(csvFile))) {
-           String line = in.readLine();
+        try (BufferedReader in = new BufferedReader(new FileReader(csvFile))) {
+            String line = in.readLine();
 
-           //Read information from file
-           while (line != null){
-               String[] arr = line.split(", ");
+            //Read information from file
+            while (line != null) {
+                String[] arr = line.split(", ");
 
-               int empId = Integer.parseInt(arr[0]);
-               int projId = Integer.parseInt(arr[1]);
-               LocalDate dateFrom = LocalDate.parse((arr[2]));
-               LocalDate dateTo;
-               if (arr[3].equals("NULL")) {
-                   dateTo = LocalDate.now();
-               }else {
-                   dateTo = LocalDate.parse(arr[3]);
-               }
-               //create object of class Employee
-               Employee employee = new Employee(empId,projId,dateFrom,dateTo);
-               //add the object in the list
-               employeeList.add(employee);
+                int empId = Integer.parseInt(arr[0]);
+                int projId = Integer.parseInt(arr[1]);
+                LocalDate dateFrom = LocalDate.parse((arr[2]));
+                LocalDate dateTo;
+                if (arr[3].equals("NULL")) {
+                    dateTo = LocalDate.now();
+                } else {
+                    dateTo = LocalDate.parse(arr[3]);
+                }
+                //create object of class Employee
+                Employee employee = new Employee(empId, projId, dateFrom, dateTo);
+                //add the object in the list
+                employeeList.add(employee);
 
-               line = in.readLine();
-           }
+                line = in.readLine();
+            }
 
-           //Group employees in map by projectId like a key
+            //Group employees in map by projectId like a key
             List<Employee> employeeList1 = new ArrayList<>();
-            for(int i=0; i<employeeList.size(); i++){
+            for (int i = 0; i < employeeList.size(); i++) {
                 int key = employeeList.get(i).getProjectID();
                 if (grupByProjectMap.get(key) != null) {
                     for (int j = 0; j < grupByProjectMap.get(key).size(); j++) {
@@ -49,7 +49,7 @@ public class Main {
                     }
                 }
                 employeeList1.add(employeeList.get(i));
-                grupByProjectMap.put(key,employeeList1);
+                grupByProjectMap.put(key, employeeList1);
                 employeeList1 = new ArrayList<>();
 
             }
@@ -58,8 +58,7 @@ public class Main {
             System.out.println(findLongestWorkingPair(grupByProjectMap).toString());
 
 
-
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -81,6 +80,7 @@ public class Main {
         }
         return longestWorkingPair;
     }
+
     private static int calculateDaysWorked(Employee emp1, Employee emp2) {
         LocalDate dateFrom1 = emp1.getDateFrom();
         LocalDate dateTo1 = emp1.getDateTo();
